@@ -42,7 +42,7 @@ function round(playerSelection, computerSelection){
     }
 }
 
-function game(){
+/*function game(){
     won = 0;
     lost = 0;
     tied = 0;
@@ -64,4 +64,4 @@ function game(){
     console.log(`You won ${won} times`)
     console.log(`You lost ${lost} times`)
     console.log(`You tied ${tied} times`)
-}
+}*/

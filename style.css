@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.options{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin: 20px;
+    border: solid black;
+    border-radius: 10px;
+    background-color:beige;
+    flex-wrap: wrap;
+    padding: 20px
+}
+
+.scores{
+    display: flex;
+    gap: 40px;
+    border: solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+img{
+    height: 135px;
+    width: 150px;
+}
+
+footer{
+    width: 100%;
+    background-color: beige;
+    margin-top: auto;
+}
+
+p{
+    font-size: medium;
+}
+
+header{
+    background-color: beige;
+    margin: 0;
+    width: 100%;
+}
