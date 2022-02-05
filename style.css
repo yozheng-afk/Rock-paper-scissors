@@ -37,16 +37,13 @@ img{
     height: 135px;
     width: 150px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 footer{
     width: 100%;
     background-color: beige;
     margin-top: auto;
-}
-
-p{
-    font-size: medium;
 }
 
 header{
@@ -70,6 +67,17 @@ header{
     border-radius: 5px;
 }
 
-.computer img{
-    transition-delay: 0.5s;
+.message{
+    display: flex;
+}
+
+.buttonStyle{
+    width: 200px;
+    border: 0;
+    border-radius: 10px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: medium;
+    background-color: rgb(71, 98, 138);
+    color: white;
 }
