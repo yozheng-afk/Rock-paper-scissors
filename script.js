@@ -1,67 +1,83 @@
-let options = ["Rock", "Paper", "Scissors"]
+let options = ["rock", "paper", "scissors"];
+let selected = 0;
+let yourLives = 5;
+let computerLives = 5;
+let roundCount = 1;
+
+const imgs = document.querySelectorAll(".your img");
+const yourLivesDisplay = document.querySelector(".player .score");
+const computerLivesDisplay = document.querySelector(".computer .score");
+const roundDisplay = document.querySelector(".round");
+
+
+function hover(e){
+    e.target.classList.add("hovering");
+}
+
+function leave(e){
+    e.target.classList.remove("hovering");
+}
+
+function computerDisplay(choice){
+    const display = document.querySelector(".computer ." + choice);
+    display.classList.add("computerClicked");
+}
 
 function computerPlay(){
     return options[Math.floor(Math.random() * 3)];
 }
 
 function round(playerSelection, computerSelection){
-    playerSelection = playerSelection.toUpperCase();
-    computerSelection = computerSelection.toUpperCase();
-    if(playerSelection === "ROCK"){
-        if(computerSelection === "ROCK"){
-            return "You tied! Rock ties with rock";
+    if(playerSelection === "rock"){
+        if(computerSelection === "paper"){
+            yourLives -= 1;
+            yourLivesDisplay.textContent = `${yourLives}`;
         }
-        else if(computerSelection === "PAPER"){
-            return "You lost! Rock loses to paper";
-        }
-        else{
-            return "You won! Rock beats scissors";
+        else if(computerSelection === "scissors"){
+            computerLives -= 1;
+            computerLivesDisplay.textContent = `${computerLives}`;
         }
     }
-    else if(playerSelection == "PAPER"){
-        if(computerSelection === "ROCK"){
-            return "You won! Paper beats rock";
+    else if(playerSelection == "paper"){
+        if(computerSelection === "rock"){
+            computerLives -= 1;
+            computerLivesDisplay.textContent = `${computerLives}`;
         }
-        else if(computerSelection === "PAPER"){
-            return "You tied! Paper ties paper";
-        }
-        else{
-            return "You lost! Paper loses to scissors";
+        else if(computerSelection === "scissors"){
+            yourLives -= 1;
+            yourLivesDisplay.textContent = `${yourLives}`
         }
     }
     else{
-        if(computerSelection === "ROCK"){
-            return "You lost! Scissors loses to rock";
+        if(computerSelection === "rock"){
+            yourLives -= 1;
+            yourLivesDisplay.textContent = `${yourLives}`
         }
-        else if(computerSelection === "PAPER"){
-            return "You won! Scissors beats paper";
+        else if(computerSelection === "paper"){
+            computerLives -= 1
+            computerLivesDisplay.textContent = `${computerLives}`;
         }
-        else{
-            return "You tied! Scissors ties with scissors";
-        }
+    }
+    roundCount += 1;
+    roundDisplay.textContent = `Round ${roundCount}`;
+}
+
+function clicked(e){
+    if(selected === 0){
+        selected = 1;
+        e.target.classList.add("playerClicked");
+        let computerSelection = computerPlay();
+        let playerSelection = e.target.classList[0];
+        computerDisplay(computerSelection);
+        round(playerSelection, computerSelection);
+        selected = 0;
     }
 }
 
-/*function game(){
-    won = 0;
-    lost = 0;
-    tied = 0;
-    for(let i = 0; i < 5; i++){
-        playerSelection = window.prompt("Rock, Papers or Scissors?");
-        computerSelection = computerPlay();
-        result = round(playerSelection, computerSelection);
-        console.log(result);
-        if(result.indexOf("You won") == 0){
-            won += 1;
-        }
-        else if(result.indexOf("You lost") == 0){
-            lost += 1;
-        }
-        else{
-            tied += 1;
-        }
-    }
-    console.log(`You won ${won} times`)
-    console.log(`You lost ${lost} times`)
-    console.log(`You tied ${tied} times`)
-}*/
+imgs.forEach(img => {
+    img.addEventListener("mouseenter", hover);
+    img.addEventListener("mouseleave", leave);
+    img.addEventListener("click", clicked);
+});
+
+
