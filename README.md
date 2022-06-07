@@ -1,2 +1,2 @@
 # Rock-paper-scissors
-The purpose of this project is to practice JavaScript
+A simple javascript game to practice web development fundamentals
